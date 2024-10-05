@@ -1,3 +1,51 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.react-aria-Button {
+  @apply bg-blue-500 text-white font-bold text-sm py-2 px-4 rounded;
+}
+
+.react-aria-Button:hover {
+  @apply bg-blue-700;
+}
+
+.react-aria-Button:focus {
+  @apply outline-none ring-2 ring-blue-400 ring-offset-2 ring-offset-blue-800;
+}
+
+.react-aria-Button:active {
+  @apply bg-blue-800;
+}
+
+.react-aria-TextField {
+  @apply flex flex-col py-2 text-sm;
+}
+
+.react-aria-TextField:focus {
+  @apply outline-none ring-2 ring-blue-400 ring-offset-2 ring-offset-blue-800;
+}
+
+.react-aria-TextField:disabled {
+  @apply bg-gray-100 cursor-not-allowed;
+}
+
+.react-aria-Input {
+  @apply border border-gray-300 rounded py-2 px-3 text-sm;
+}
+
+.react-aria-Input:focus {
+  @apply outline-none ring-2 ring-blue-400;
+}
+
+.react-aria-Input:disabled {
+  @apply bg-gray-100 cursor-not-allowed;
+}
+
+.react-aria-Label {
+  @apply block text-sm font-medium text-gray-700;
+}
+
+.react-aria-FieldError {
+  @apply text-sm text-red-500;
+}
