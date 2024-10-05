@@ -1,8 +1,8 @@
-// app/routes/__root.tsx
 import { createRootRoute } from "@tanstack/react-router";
 import { Outlet, ScrollRestoration } from "@tanstack/react-router";
 import { Body, Head, Html, Meta, Scripts } from "@tanstack/start";
 import * as React from "react";
+import appCss from "~/styles/app.css?url";
 
 export const Route = createRootRoute({
   meta: () => [
@@ -17,6 +17,20 @@ export const Route = createRootRoute({
       title: "TanStack Start Starter",
     },
   ],
+  links: () => [
+    {
+      rel: "stylesheet",
+      href: appCss,
+    },
+  ],
+  // errorComponent: (props) => {
+  //   return (
+  //     <RootDocument>
+  //       <DefaultCatchBoundary {...props} />
+  //     </RootDocument>
+  //   );
+  // },
+  // notFoundComponent: () => <NotFound />,
   component: RootComponent,
 });
 

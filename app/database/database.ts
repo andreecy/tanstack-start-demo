@@ -4,10 +4,7 @@ import { Kysely, PostgresDialect } from "kysely";
 
 const dialect = new PostgresDialect({
   pool: new Pool({
-    database: "tanstack",
-    host: "localhost",
-    user: "postgres",
-    port: 5432,
+    connectionString: "postgres://postgres:postgres@localhost:5432/tanstack", // TODO: change to env
     max: 10,
   }),
 });
