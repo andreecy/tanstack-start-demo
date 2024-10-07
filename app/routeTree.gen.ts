@@ -12,7 +12,7 @@
 
 import { Route as rootRoute } from './routes/__root'
 import { Route as CounterImport } from './routes/counter'
-import { Route as LayoutImport } from './routes/_layout'
+import { Route as AddImport } from './routes/add'
 import { Route as IndexImport } from './routes/index'
 
 // Create/Update Routes
@@ -22,8 +22,8 @@ const CounterRoute = CounterImport.update({
   getParentRoute: () => rootRoute,
 } as any)
 
-const LayoutRoute = LayoutImport.update({
-  id: '/_layout',
+const AddRoute = AddImport.update({
+  path: '/add',
   getParentRoute: () => rootRoute,
 } as any)
 
@@ -43,11 +43,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexImport
       parentRoute: typeof rootRoute
     }
-    '/_layout': {
-      id: '/_layout'
-      path: ''
-      fullPath: ''
-      preLoaderRoute: typeof LayoutImport
+    '/add': {
+      id: '/add'
+      path: '/add'
+      fullPath: '/add'
+      preLoaderRoute: typeof AddImport
       parentRoute: typeof rootRoute
     }
     '/counter': {
@@ -64,41 +64,41 @@ declare module '@tanstack/react-router' {
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
-  '': typeof LayoutRoute
+  '/add': typeof AddRoute
   '/counter': typeof CounterRoute
 }
 
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
-  '': typeof LayoutRoute
+  '/add': typeof AddRoute
   '/counter': typeof CounterRoute
 }
 
 export interface FileRoutesById {
   __root__: typeof rootRoute
   '/': typeof IndexRoute
-  '/_layout': typeof LayoutRoute
+  '/add': typeof AddRoute
   '/counter': typeof CounterRoute
 }
 
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '' | '/counter'
+  fullPaths: '/' | '/add' | '/counter'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '' | '/counter'
-  id: '__root__' | '/' | '/_layout' | '/counter'
+  to: '/' | '/add' | '/counter'
+  id: '__root__' | '/' | '/add' | '/counter'
   fileRoutesById: FileRoutesById
 }
 
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
-  LayoutRoute: typeof LayoutRoute
+  AddRoute: typeof AddRoute
   CounterRoute: typeof CounterRoute
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
-  LayoutRoute: LayoutRoute,
+  AddRoute: AddRoute,
   CounterRoute: CounterRoute,
 }
 
@@ -115,15 +115,15 @@ export const routeTree = rootRoute
       "filePath": "__root.tsx",
       "children": [
         "/",
-        "/_layout",
+        "/add",
         "/counter"
       ]
     },
     "/": {
       "filePath": "index.tsx"
     },
-    "/_layout": {
-      "filePath": "_layout.tsx"
+    "/add": {
+      "filePath": "add.tsx"
     },
     "/counter": {
       "filePath": "counter.tsx"
